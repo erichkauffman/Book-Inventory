@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 5%;
+  padding: 20px;
+  color: white;
+}
+
+.MenuHolder{
+  float: left;
+  width: 40%;
+}
+
+.bookDiv {
+  background-color: #CCCCCC;
+  height: 65px;
+  margin-top: .5%;
+  text-align: left;
+}
+
+.bookDiv:hover{
+  background-color: #AAAAAA;
+}
+
+.bookDiv:active{
+  background-color: #888888;
+}
+
+.bookPt{
+  font-size: 100%;
+  float: left;
+  padding-left: 1em;
+  padding-top: 5px;
+}
+
+.bookPa{
+  font-size: 100%;
+  float: right;
+  padding-right: 15px;
+  padding-left: 1em;
+  padding-top: 5px;
+}
