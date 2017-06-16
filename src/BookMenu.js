@@ -46,8 +46,6 @@ export default class BookMenu extends Component{
   render(){
     return(
       <div className="MenuHolder">
-        <BookMenuItem title="Introduction to Algorithms" author="Thomas Corman" id={0}/>
-        <BookMenuItem title="Cracking the Coding Interview" author="Gayle Laakmann McDowell" id={0}/>
         {this.allBooks()}
       </div>
     );
