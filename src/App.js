@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import BookMenu from './BookMenu';
+import BookView from './BookView';
 
 class App extends Component {
   constructor(props){
@@ -29,6 +30,13 @@ class App extends Component {
       });
   }
 
+//Get index of book display
+  getIndex = (i) => {
+    this.setState({
+      bookIndex: i
+    });
+  }
+
   componentDidMount(){
     this.getData();
   }
@@ -39,7 +47,8 @@ class App extends Component {
         <div className="App-header">
           <h2>Inventory</h2>
         </div>
-        <BookMenu bookData={this.state.books} />
+        <BookMenu bookData={this.state.books} getIndex={this.getIndex}/>
+        <BookView bookData={this.state.books[this.state.bookIndex]}/>
       </div>
     );
   }
