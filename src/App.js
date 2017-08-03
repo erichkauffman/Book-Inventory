@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import BookMenu from './BookMenu';
+import BookView from './BookView';
 
 class App extends Component {
   constructor(props){
@@ -8,7 +9,7 @@ class App extends Component {
     this.state = {
       dataReceived: false,
       books: [],
-      bookIndex: null
+      singleBook: 0
     };
   }
 
@@ -19,6 +20,7 @@ class App extends Component {
         return response.json();
       })
       .then( (bookData) => {
+        console.log(bookData);
         this.setState({
           dataReceived: true,
           books: bookData
@@ -27,6 +29,18 @@ class App extends Component {
       .catch( (err) => {
         console.log(err);
       });
+  }
+
+//Get index of book display
+  getID = (i) => {
+    for(let n = 0; n < this.state.books.length; n++){
+      if(this.state.books[n].rowid === i){
+        this.setState({
+          singleBook: this.state.books[n]
+        });
+        break;
+      }
+    }
   }
 
   componentDidMount(){
@@ -39,7 +53,8 @@ class App extends Component {
         <div className="App-header">
           <h2>Inventory</h2>
         </div>
-        <BookMenu bookData={this.state.books} />
+        <BookMenu bookData={this.state.books} getID={this.getID}/>
+        <BookView bookData={this.state.singleBook}/>
       </div>
     );
   }

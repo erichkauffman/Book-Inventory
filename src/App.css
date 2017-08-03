@@ -1,3 +1,4 @@
+/*App.js*/
 .App {
   text-align: center;
 }
@@ -9,11 +10,13 @@
   color: white;
 }
 
+/*BookMenu.js*/
 .MenuHolder{
   float: left;
   width: 40%;
 }
 
+/*BookMenuItem.js*/
 .bookDiv {
   background-color: #CCCCCC;
   height: 65px;
@@ -42,4 +45,15 @@
   padding-right: 15px;
   padding-left: 1em;
   padding-top: 5px;
+}
+
+/*BookView.js*/
+.bookView{
+  float: right;
+  text-align: left;
+  width: 55%;
+}
+
+th{
+  width: 15%;
 }
