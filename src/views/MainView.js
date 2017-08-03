@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BookMenu from '../components/BookMenu';
-import BookView from '../components/BookView';
+import BookInfo from '../components/BookInfo';
 
 export default class MainView extends Component{
   constructor(props){
@@ -43,9 +43,9 @@ export default class MainView extends Component{
   }
 
 //Conditionally render the BookView. This is to keep from seeing stupid things
-  renderBookView = () => {
+  renderBookInfo = () => {
     if(this.state.singleBook !== 0){
-      return(<BookView bookData={this.state.singleBook}/>);
+      return(<BookInfo bookData={this.state.singleBook}/>);
     }
   }
 
@@ -60,7 +60,7 @@ export default class MainView extends Component{
           <h2>Inventory</h2>
         </div>
         <BookMenu bookData={this.state.books} getID={this.getID}/>
-        {this.renderBookView()}
+        {this.renderBookInfo()}
       </div>
     );
   }
