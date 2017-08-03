@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import BookMenu from './BookMenu';
-import BookView from './BookView';
+import BookMenu from './lib/BookMenu';
+import BookView from './lib/BookView';
 
 class App extends Component {
   constructor(props){
