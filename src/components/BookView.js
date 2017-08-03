@@ -36,10 +36,10 @@ export default class BookView extends Component{
           <th>Purchase Location:</th><td>{this.props.bookData.loc_purch}</td>
         </tr>
         <tr>
-          <th>Amount Paid:</th><td>{this.props.bookData.amt_paid}</td>
+          <th>Amount Paid:</th><td>${this.props.bookData.amt_paid/100}</td>
         </tr>
         <tr>
-          <th>Sell Price:</th><td>{this.props.bookData.sell_price}</td>
+          <th>Sell Price:</th><td>${this.props.bookData.sell_price/100}</td>
         </tr>
         <tr>
           <th>Selling Site:</th><td>{this.props.bookData.site}</td>

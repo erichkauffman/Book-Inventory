@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       dataReceived: false,
       books: [],
-      singleBook: 0
+      singleBook: -1
     };
   }
 
@@ -43,6 +43,12 @@ class App extends Component {
     }
   }
 
+  renderBookView = () => {
+    if(this.state.singleBook !== -1){
+      return(<BookView bookData={this.state.singleBook}/>);
+    }
+  }
+
   componentDidMount(){
     this.getData();
   }
@@ -54,7 +60,7 @@ class App extends Component {
           <h2>Inventory</h2>
         </div>
         <BookMenu bookData={this.state.books} getID={this.getID}/>
-        <BookView bookData={this.state.singleBook}/>
+        {this.renderBookView()}
       </div>
     );
   }
