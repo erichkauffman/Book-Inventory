@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class BookView extends Component{
+export default class BookInfo extends Component{
 
   render(){
     return(
-      <table className="bookView">
+      <table className="bookInfo">
         <tr>
           <th>Title:</th><td>{this.props.bookData.title}</td>
         </tr>
