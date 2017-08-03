@@ -7,7 +7,7 @@ export default class BookMenu extends Component{
     let bookItems = [];
     //eslint-disable-next-line
     this.props.bookData.map( (i) => {
-      bookItems.push(<BookMenuItem title={i.title} author={i.authors} id={i.rowid} onClick={this.props.getIndex3}/>);
+      bookItems.push(<BookMenuItem title={i.title} author={i.authors} id={i.rowid} onClick={this.props.getID}/>);
     });
     return bookItems;
   }

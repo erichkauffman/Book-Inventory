@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       dataReceived: false,
       books: [],
-      bookIndex: null
+      singleBook: 0
     };
   }
 
@@ -20,6 +20,7 @@ class App extends Component {
         return response.json();
       })
       .then( (bookData) => {
+        console.log(bookData);
         this.setState({
           dataReceived: true,
           books: bookData
@@ -31,10 +32,15 @@ class App extends Component {
   }
 
 //Get index of book display
-  getIndex = (i) => {
-    this.setState({
-      bookIndex: i
-    });
+  getID = (i) => {
+    for(let n = 0; n < this.state.books.length; n++){
+      if(this.state.books[n].rowid === i){
+        this.setState({
+          singleBook: this.state.books[n]
+        });
+        break;
+      }
+    }
   }
 
   componentDidMount(){
@@ -47,8 +53,8 @@ class App extends Component {
         <div className="App-header">
           <h2>Inventory</h2>
         </div>
-        <BookMenu bookData={this.state.books} getIndex={this.getIndex}/>
-        <BookView bookData={this.state.books[this.state.bookIndex]}/>
+        <BookMenu bookData={this.state.books} getID={this.getID}/>
+        <BookView bookData={this.state.singleBook}/>
       </div>
     );
   }
