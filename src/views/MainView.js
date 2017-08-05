@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BookMenu from '../components/BookMenu';
 import BookInfo from '../components/BookInfo';
+import MenuButton from '../components/MenuButton';
 
 export default class MainView extends Component{
   constructor(props){
@@ -19,7 +20,6 @@ export default class MainView extends Component{
         return response.json();
       })
       .then( (bookData) => {
-        console.log(bookData);
         this.setState({
           dataReceived: true,
           books: bookData
@@ -57,7 +57,7 @@ export default class MainView extends Component{
     return(
       <div className="App">
         <div className="App-header">
-          <h2>Inventory</h2>
+          <MenuButton onClick={this.props.changeView}>Add Book</MenuButton>
         </div>
         <BookMenu bookData={this.state.books} getID={this.getID}/>
         {this.renderBookInfo()}
