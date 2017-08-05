@@ -1,11 +1,31 @@
+//eslint-disable-next-line
 import React, { Component } from 'react';
+import { chooseView } from './lib/Nav';
 import './App.css';
-import MainView from './views/MainView';
 
 class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      view: 'main'
+    }
+  }
+
+  goToForm = () => {
+    this.setState({
+      view: 'form'
+    });
+  }
+
+  goToMain = () => {
+    this.setState({
+      view: 'main'
+    });
+  }
+
   render(){
     return(
-      <MainView/>
+      chooseView(this.state.view, this.goToMain, this.goToForm)
     );
   }
 }

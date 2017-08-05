@@ -1,14 +1,29 @@
-/*App.js*/
-.App {
+/* 1. Views */
+
+/*MainView.js*/
+.App{
   text-align: center;
 }
 
-.App-header {
+.App-header{
   background-color: #222;
-  height: 5%;
-  padding: 20px;
+  margin-bottom: 10px;
   color: white;
+  height: 100px;
 }
+
+/*BookView.js*/
+.bookInfo{
+  float: right;
+  text-align: left;
+  width: 55%;
+}
+
+th{
+  width: 15%;
+}
+
+/* 2. Components */
 
 /*BookMenu.js*/
 .MenuHolder{
@@ -17,7 +32,7 @@
 }
 
 /*BookMenuItem.js*/
-.bookDiv {
+.bookDiv{
   background-color: #CCCCCC;
   height: 65px;
   margin-top: .5%;
@@ -47,13 +62,32 @@
   padding-top: 5px;
 }
 
-/*BookView.js*/
-.bookInfo{
-  float: right;
-  text-align: left;
-  width: 55%;
+/*TextButton.js*/
+.TextButton{
+  border-style: solid;
+  border-color: #FFFFFF;
 }
 
-th{
+/*MenuButton.js*/
+.MenuButton{
+  float: left;
+  margin-left: 10%;
+  margin-top: 1%;
   width: 15%;
+  border-style: solid;
+  border-color: #FFFFFF;
+  background-color: #222;
+}
+
+.MenuButton:hover{
+  background-color: #555;
+}
+
+.MenuButton:active{
+  background-color: #333;
+}
+
+.MenuButton > p{
+  color: #FFFFFF;
+  font-size: 1em;
 }
