@@ -9,8 +9,15 @@ export default class MainView extends Component{
     this.state = {
       dataReceived: false,
       books: [],
-      singleBook: 0
+      singleBook: 0,
+      search: ""
     };
+  }
+
+  onChange = (e) => {
+    this.setState({
+      search: e.target.value
+    });
   }
 
 //Get data from book inventory API
@@ -59,7 +66,10 @@ export default class MainView extends Component{
         <div className="App-header">
           <MenuButton onClick={this.props.changeView}>Add Book</MenuButton>
         </div>
-        <BookMenu bookData={this.state.books} getID={this.getID}/>
+        <div className="searchHolder">
+          <input className="searchBar" type="text" onChange={this.onChange.bind(this)}/>
+        </div>
+        <BookMenu bookData={this.state.books} getID={this.getID} search={this.state.search}/>
         {this.renderBookInfo()}
       </div>
     );

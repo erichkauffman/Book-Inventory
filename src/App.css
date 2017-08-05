@@ -12,6 +12,15 @@
   height: 100px;
 }
 
+.searchHolder{
+  text-align: left;
+}
+
+.searchBar{
+  margin-left: 10%;
+  width: 20%;
+}
+
 /*BookView.js*/
 .bookInfo{
   float: right;
@@ -71,7 +80,7 @@ th{
 /*MenuButton.js*/
 .MenuButton{
   float: left;
-  margin-left: 10%;
+  margin-left: 12.5%;
   margin-top: 1%;
   width: 15%;
   border-style: solid;
