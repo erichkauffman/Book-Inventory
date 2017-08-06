@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import MenuButton from '../components/MenuButton';
+import SearchButton from '../components/SearchButton';
 import BookMenu from '../components/BookMenu';
 import BookInfo from '../components/BookInfo';
-import MenuButton from '../components/MenuButton';
+
 
 export default class MainView extends Component{
   constructor(props){
@@ -10,6 +12,7 @@ export default class MainView extends Component{
       dataReceived: false,
       books: [],
       singleBook: 0,
+      searchType: 'A',
       search: ""
     };
   }
@@ -56,6 +59,12 @@ export default class MainView extends Component{
     }
   }
 
+  getSearchState = (type) => {
+    this.setState({
+      searchType: type
+    });
+  }
+
   componentDidMount(){
     this.getData();
   }
@@ -68,8 +77,11 @@ export default class MainView extends Component{
         </div>
         <div className="searchHolder">
           <input className="searchBar" type="text" onChange={this.onChange.bind(this)}/>
+          <SearchButton currentSearchType={this.state.searchType} getSearchType={this.getSearchState}>A</SearchButton>
+          <SearchButton currentSearchType={this.state.searchType} getSearchType={this.getSearchState}>T</SearchButton>
+          <SearchButton currentSearchType={this.state.searchType} getSearchType={this.getSearchState}>I</SearchButton>
         </div>
-        <BookMenu bookData={this.state.books} getID={this.getID} search={this.state.search}/>
+        <BookMenu bookData={this.state.books} getID={this.getID} searchType={this.state.searchType} search={this.state.search}/>
         {this.renderBookInfo()}
       </div>
     );
