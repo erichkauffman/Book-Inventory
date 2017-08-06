@@ -17,8 +17,13 @@
 }
 
 .searchBar{
+  display: inline-block;
+  vertical-align: middle;
   margin-left: 10%;
   width: 20%;
+  height: 23px;
+  font-size: 18px;
+  border-style: solid;
 }
 
 /*BookView.js*/
@@ -99,4 +104,28 @@ th{
 .MenuButton > p{
   color: #FFFFFF;
   font-size: 1em;
+}
+
+/*SearchButton.js*/
+.SearchButton{
+  border-style: solid;
+  display: inline-block;
+  height: .5%;
+  width: 1.5%;
+  margin-left: .75%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.SearchButton > p{
+  margin: 20%;
+  font-size: 12px;
+}
+
+.SearchButton:hover{
+  background-color: #BBBBBB;
+}
+
+.SearchButton:active{
+  background-color: #999999;
 }
