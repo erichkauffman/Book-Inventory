@@ -25,7 +25,7 @@ export default class MainView extends Component{
 
 //Get data from book inventory API
   getData = () => {
-    fetch('http://localhost:8000/all/')
+    fetch('http://localhost:8000/all')
       .then( (response) => {
         return response.json();
       })
