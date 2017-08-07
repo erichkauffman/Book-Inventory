@@ -31,6 +31,7 @@
   float: right;
   text-align: left;
   width: 55%;
+  padding-left: 1%;
 }
 
 th{
@@ -42,7 +43,7 @@ th{
 /*BookMenu.js*/
 .MenuHolder{
   float: left;
-  width: 40%;
+  width: 45%;
 }
 
 /*BookMenuItem.js*/
@@ -68,12 +69,25 @@ th{
   padding-top: 5px;
 }
 
+.LeftHolder{
+  margin-left: 350px;
+  text-align: right;
+}
+
 .bookPa{
   font-size: 100%;
-  float: right;
-  padding-right: 15px;
-  padding-left: 1em;
+  text-align: right;
+  margin-right: 5%;
   padding-top: 5px;
+  display: inline-block;
+}
+
+.removeButton{
+  float: right;
+  width: 25px;
+  height: auto;
+  margin-right: 10px;
+  padding-top: 4.5%;
 }
 
 /*TextButton.js*/

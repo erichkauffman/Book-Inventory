@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DeleteButton from '../images/DeleteButton.png';
+import MoneyButton from '../images/MoneyButton.png';
 
 export default class BookMenuItem extends Component{
 
@@ -9,8 +11,12 @@ export default class BookMenuItem extends Component{
   render(){
     return(
       <div className="bookDiv" onClick={this.handleClick}>
-          <p className="bookPt">{this.props.title}</p>
+        <p className="bookPt">{this.props.title}</p>
+        <div className="LeftHolder">
           <p className="bookPa">{this.props.author}</p>
+          <img className="removeButton" src={MoneyButton}/>
+          <img className="removeButton" src={DeleteButton}/>
+        </div>
       </div>
     );
   }

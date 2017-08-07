@@ -3,8 +3,6 @@ import MenuButton from '../components/MenuButton';
 import SearchButton from '../components/SearchButton';
 import BookMenu from '../components/BookMenu';
 import BookInfo from '../components/BookInfo';
-import DeleteButton from '../images/DeleteButton.png';
-import MoneyButton from '../images/MoneyButton.png';
 
 export default class MainView extends Component{
   constructor(props){
