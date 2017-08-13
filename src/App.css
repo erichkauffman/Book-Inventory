@@ -3,6 +3,7 @@
 /*MainView.js*/
 .App{
   text-align: center;
+  overflow: hidden;
 }
 
 .App-header{
@@ -26,23 +27,14 @@
   border-style: solid;
 }
 
-/*BookView.js*/
-.bookInfo{
-  float: right;
-  text-align: left;
-  width: 55%;
-}
-
-th{
-  width: 15%;
-}
-
 /* 2. Components */
 
 /*BookMenu.js*/
 .MenuHolder{
   float: left;
-  width: 40%;
+  width: 45%;
+  height: 850px;
+  overflow: scroll;
 }
 
 /*BookMenuItem.js*/
@@ -68,12 +60,33 @@ th{
   padding-top: 5px;
 }
 
+.LeftHolder{
+  margin-left: 350px;
+  text-align: right;
+}
+
 .bookPa{
   font-size: 100%;
-  float: right;
-  padding-right: 15px;
-  padding-left: 1em;
+  text-align: right;
+  margin-right: 5%;
   padding-top: 5px;
+  display: inline-block;
+}
+
+.removeButton{
+  float: right;
+  width: 25px;
+  height: auto;
+  margin-right: 10px;
+  padding-top: 18px;
+}
+
+.removeButton:hover{
+  filter: brightness(75%);
+}
+
+.removeButton:active{
+  filter:brightness(50%);
 }
 
 /*TextButton.js*/
@@ -128,4 +141,16 @@ th{
 
 .SearchButton:active{
   background-color: #999999;
+}
+
+/*BookInfo.js*/
+.bookInfo{
+  float: right;
+  text-align: left;
+  width: 55%;
+  padding-left: 1%;
+}
+
+th{
+  width: 15%;
 }

@@ -4,7 +4,6 @@ import SearchButton from '../components/SearchButton';
 import BookMenu from '../components/BookMenu';
 import BookInfo from '../components/BookInfo';
 
-
 export default class MainView extends Component{
   constructor(props){
     super(props);
@@ -13,7 +12,8 @@ export default class MainView extends Component{
       books: [],
       singleBook: 0,
       searchType: 'A',
-      search: ""
+      search: "",
+      reqReceive: 0
     };
   }
 

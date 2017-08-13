@@ -45,7 +45,7 @@ export default class BookInfo extends Component{
           <th>Selling Site:</th><td>{this.props.bookData.site}</td>
         </tr>
         <tr>
-          <th>Shelf Location:</th><td></td>
+          <th>Shelf Location:</th><td>{this.props.bookData.shelf}</td>
         </tr>
       </table>
     );
