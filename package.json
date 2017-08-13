@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
+    "react-confirm-alert": "^1.0.7",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
