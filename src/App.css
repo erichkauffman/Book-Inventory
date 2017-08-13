@@ -43,6 +43,7 @@
   height: 65px;
   margin-top: .5%;
   text-align: left;
+  border-radius: 10px;
 }
 
 .bookDiv:hover{
@@ -92,7 +93,17 @@
 /*TextButton.js*/
 .TextButton{
   border-style: solid;
-  border-color: #FFFFFF;
+  width: 150px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.TextButton:hover{
+  background-color: #CCCCCC;
+}
+
+.TextButton:active{
+  background-color: #999999;
 }
 
 /*MenuButton.js*/
@@ -104,6 +115,7 @@
   border-style: solid;
   border-color: #FFFFFF;
   background-color: #222;
+  border-radius: 25px;
 }
 
 .MenuButton:hover{
