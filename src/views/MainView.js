@@ -12,7 +12,8 @@ export default class MainView extends Component{
       books: [],
       singleBook: 0,
       searchType: 'A',
-      search: ""
+      search: "",
+      reqReceive: 0
     };
   }
 
