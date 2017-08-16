@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { chooseView } from './lib/Nav';
 import './App.css';
 
+
 class App extends Component{
   constructor(props){
     super(props);
@@ -11,6 +12,7 @@ class App extends Component{
     }
   }
 
+//Change view state
   goToForm = () => {
     this.setState({
       view: 'form'
