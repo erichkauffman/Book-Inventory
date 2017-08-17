@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "immutability-helper": "^2.3.1",
     "react": "^15.5.4",
     "react-confirm-alert": "^1.0.7",
     "react-datepicker": "^0.53.0",
