@@ -18,7 +18,23 @@ export default class FormView extends Component{
   constructor(props){
     super(props);
     this.state = {
-      startDate: moment()
+      startDate: moment(),
+      bookProps: {
+        title: null,
+        authors: null,
+        isbn: null,
+        edition: null,
+        printing: null,
+        yr_print: null,
+        date_purch: null,
+        condition: null,
+        cover: null,
+        loc_purch: null,
+        amt_paid: null,
+        sell_price: null,
+        site: null,
+        shelf: null
+      }
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -31,12 +47,8 @@ export default class FormView extends Component{
 
   onChange = (value) => {
     this.setState({
-      dropVal: value
+      locOps: value
     });
-  }
-
-  componentDidMount(){
-    console.log(this.locOps);
   }
 
   render(){
@@ -86,7 +98,7 @@ export default class FormView extends Component{
           </tr>
           <tr>
             <th>Purchase Location:</th>
-            <td><Select.Creatable className="purchase-location" name="purchase-location" options={locOps} value={this.state.dropVal} placeholder="select a location" onChange={this.onChange}/></td>
+            <td><Select.Creatable className="purchase-location" name="purchase-location" options={locOps} value={this.state.bookProps.loc_purch} placeholder="select a location" onChange={this.onChange}/></td>
           </tr>
           <tr>
             <th>Amount Paid:</th>
@@ -97,9 +109,9 @@ export default class FormView extends Component{
             <td><NumericInput className="numberInputs" min={0} step={.01} precision={2}/></td>
           </tr>
           <tr>
-            <th>Cover Type:</th>
-            <td>Amazon<input type="radio" name="site" value="Amazon"/>
-                Ebay<input type="radio" name="site" value="Ebay"/></td>
+            <th>Site Listed:</th>
+            <td>Amazon<input type="checkbox" name="site" value="Amazon"/>
+                Ebay<input type="checkbox" name="site" value="Ebay"/></td>
           </tr>
           <tr>
             <th>Shelf:</th>
