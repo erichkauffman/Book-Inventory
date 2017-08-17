@@ -25,7 +25,20 @@ export default class FormView extends Component{
           Printing:
           <input type='text' />
         </label>
-        <TextButton>Submit</TextButton>
+        <label>
+          Year Printed:
+          <input type='text' />
+        </label>
+        <div>
+          <label>New:</label>
+          <input type="radio" name="condition" value="New"/>
+          <label>Like New:</label>
+          <input type="radio" name="condition" value="Like New"/>
+          <input type="radio" name="condition" value="Very Good"/>
+          <input type="radio" name="condition" value="Good"/>
+          <input type="radio" name="condition" value="Acceptable"/>
+        </div>
+        <TextButton onClick={this.props.changeView}>Submit</TextButton>
       </div>
     )
   }
