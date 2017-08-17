@@ -5,7 +5,10 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-confirm-alert": "^1.0.7",
-    "react-dom": "^15.5.4"
+    "react-datepicker": "^0.53.0",
+    "react-dom": "^15.5.4",
+    "react-numeric-input": "^2.1.0",
+    "react-select": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "react-scripts": "1.0.6"
