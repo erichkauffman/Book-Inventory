@@ -10,8 +10,8 @@ import 'react-select/dist/react-select.css';
 
 //Location options stand-in
 const locOps = [{value: 'Online', label: 'Online'},
-              {value: 'Redwing Public Library', label: 'Redwing Public Library'},
-              {value: 'Hudson Public Library', label: 'Hudson Public Library'}];
+                {value: 'Redwing Public Library', label: 'Redwing Public Library'},
+                {value: 'Hudson Public Library', label: 'Hudson Public Library'}];
 
 export default class FormView extends Component{
 
@@ -45,15 +45,15 @@ export default class FormView extends Component{
         <table className="formHolder">
           <tr>
             <th>Title:</th>
-            <td><input type="text"/></td>
+            <td><input type="text" className="textIn"/></td>
           </tr>
           <tr>
             <th>Author(s):</th>
-            <td><input type="text"/></td>
+            <td><input type="text" className="textIn"/></td>
           </tr>
           <tr>
             <th>ISBN:</th>
-            <td><input type="text"/></td>
+            <td><input type="text" className="textIn"/></td>
           </tr>
           <tr>
             <th>Edition:</th>
@@ -69,24 +69,24 @@ export default class FormView extends Component{
           </tr>
           <tr>
             <th>Cover Type:</th>
-            <td>Hard<input type="radio" name="cover" value="Hard"/></td>
-            <td>Soft<input type="radio" name="cover" value="Soft"/></td>
+            <td>Hard<input type="radio" name="cover" value="Hard"/>
+                Soft<input type="radio" name="cover" value="Soft"/></td>
           </tr>
           <tr>
             <th>Condition:</th>
-            <td>New<input type="radio" name="condition" value="New"/></td>
-            <td>Like New<input type="radio" name="condition" value="Like New"/></td>
-            <td>Very Good<input type="radio" name="condition" value="Very Good"/></td>
-            <td>Good<input type="radio" name="condition" value="Good"/></td>
-            <td>Acceptable<input type="radio" name="condition" value="Acceptable"/></td>
+            <td>New<input type="radio" name="condition" value="New"/>
+                Like New<input type="radio" name="condition" value="Like New"/>
+                Very Good<input type="radio" name="condition" value="Very Good"/>
+                Good<input type="radio" name="condition" value="Good"/>
+                Acceptable<input type="radio" name="condition" value="Acceptable"/></td>
           </tr>
           <tr>
             <th>Purchase Date:</th>
-            <tr><DatePicker selected={this.state.startDate} onChange={this.handleChange}/></tr>
+            <td><DatePicker selected={this.state.startDate} onChange={this.handleChange} className="dateIn"/></td>
           </tr>
           <tr>
             <th>Purchase Location:</th>
-            <tr><Select className="purchase-location" name="purchase-location" options={locOps} value={this.state.dropVal} placeholder="select a location" onChange={this.onChange}/></tr>
+            <td><Select.Creatable className="purchase-location" name="purchase-location" options={locOps} value={this.state.dropVal} placeholder="select a location" onChange={this.onChange}/></td>
           </tr>
           <tr>
             <th>Amount Paid:</th>
@@ -98,15 +98,19 @@ export default class FormView extends Component{
           </tr>
           <tr>
             <th>Cover Type:</th>
-            <td>Amazon<input type="radio" name="site" value="Amazon"/></td>
-            <td>Ebay<input type="radio" name="site" value="Ebay"/></td>
+            <td>Amazon<input type="radio" name="site" value="Amazon"/>
+                Ebay<input type="radio" name="site" value="Ebay"/></td>
           </tr>
           <tr>
-          <th>Shelf:</th>
-          <td><input type="text"/></td>
-        </tr>
+            <th>Shelf:</th>
+            <td><input type="text" className="textIn"/></td>
+          </tr>
+          <tr>
+            <th><TextButton onClick={this.props.changeView}>Submit</TextButton></th>
+            <td><TextButton onClick={this.props.changeView}>Back</TextButton></td>
+
+          </tr>
         </table>
-        <TextButton onClick={this.props.changeView}>Submit</TextButton>
       </div>
     )
   }
