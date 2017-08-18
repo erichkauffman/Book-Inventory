@@ -15,6 +15,8 @@ export function CheckNotNull(bookObject) {
     return false;
   }else if(bookObject.cover === null){
     return false;
+  }else if(bookObject.loc_purch === null){
+    return false;
   }else if(bookObject.amt_paid === null){
     return false;
   }else if(bookObject.sell_price === null){
