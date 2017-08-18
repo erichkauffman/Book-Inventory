@@ -27,6 +27,52 @@
   border-style: solid;
 }
 
+/*FormView.js*/
+
+.formView{
+  text-align: center;
+}
+
+.emptyWarn{
+  font-size: 24px;
+  color: red;
+  margin-right: 47.5%;
+}
+
+.formHolder{
+  margin-top: 3%;
+  margin-left: 15%;
+  text-align: left;
+}
+
+.formHolder > tr > td > input{
+  margin-right: 5%;
+}
+
+.textIn{
+  width: 350px;
+  height: 23px;
+  font-size: 18px;
+  border-style: solid;
+  border-color: #BBBBBB;
+}
+
+.dateIn{
+  height: 18px;
+  font-size: 16px;
+  border-style: solid;
+  border-color: #BBBBBB;
+}
+
+.numberInputs{
+  width: 65px;
+  height: 30px;
+}
+
+.purchase-location{
+  width: 225px;
+}
+
 /* 2. Components */
 
 /*BookMenu.js*/
@@ -97,6 +143,16 @@
   text-align: center;
   border-radius: 15px;
 }
+
+th > .TextButton{
+  margin-top: 15%;
+}
+
+td > .TextButton{
+  margin-top: 2.5%;
+  margin-left: 5%;
+}
+
 
 .TextButton:hover{
   background-color: #CCCCCC;
