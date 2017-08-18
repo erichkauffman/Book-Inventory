@@ -4,6 +4,8 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import TextButton from '../components/TextButton';
+import { CheckNotNull } from '../lib/CheckNotNull';
+import { postBook } from '../lib/postBook';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-select/dist/react-select.css';
@@ -18,6 +20,7 @@ export default class FormView extends Component{
   constructor(props){
     super(props);
     this.state = {
+      err: false,
       startDate: moment(),
       bookProps: {
         title: null,
@@ -32,11 +35,11 @@ export default class FormView extends Component{
         loc_purch: null,
         amt_paid: null,
         sell_price: null,
-        site: {
-          Ebay: false,
-          Amazon: false
-        },
         shelf: null
+      },
+      site: {
+        Ebay: false,
+        Amazon: false
       }
     };
   }
@@ -84,7 +87,11 @@ export default class FormView extends Component{
 
   locationChange = (value) => {
     let bookProps = this.state.bookProps;
-    bookProps.loc_purch = value.value;
+    if(value === null){
+      bookProps.loc_purch = value;
+    }else{
+      bookProps.loc_purch = value.value;
+    }
     this.setState({
       bookProps: bookProps,
       locVal: value
@@ -108,21 +115,60 @@ export default class FormView extends Component{
   }
 
   siteChange = (e) => {
+    let site = this.state.site;
+    site[e.target.value] = e.target.checked;
+    this.setState({
+      site: site
+    });
+  }
+
+  setSite = () => {
+    let site = this.state.site;
     let bookProps = this.state.bookProps;
-    bookProps.site[e.target.value] = e.target.checked;
+    let siteStr;
+    if(site.Ebay && site.Amazon){
+      siteStr = "Ebay, Amazon";
+    }else if(site.Ebay){
+      siteStr = "Ebay";
+    }else if(site.Amazon){
+      siteStr = "Amazon";
+    }else{
+      siteStr = "";
+    }
+    bookProps.site = siteStr;
     this.setState({
       bookProps: bookProps
     });
   }
 
+  checkObject = () => {
+    let bookProps = this.state.bookProps;
+    let check = CheckNotNull(bookProps);
+    this.setState({
+      err: !check
+    });
+    return check;
+  }
+
   submitForm = () => {
-    console.log(this.state.bookProps);
-    this.props.changeView();
+    this.setSite();
+    let objReady = this.checkObject();
+    if(objReady){
+      postBook(this.state.bookProps);
+      this.props.changeView();
+    }
+  }
+
+  errEmptyMessage = () => {
+    if(this.state.err){
+      return(<p className="emptyWarn">All fields must be completed before entry</p>);
+    }
+    return;
   }
 
   render(){
     return(
-      <div>
+      <div className="formView">
         <table className="formHolder">
           <tr>
             <th>Title:</th>
@@ -192,6 +238,7 @@ export default class FormView extends Component{
 
           </tr>
         </table>
+        {this.errEmptyMessage()}
       </div>
     )
   }
