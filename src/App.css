@@ -153,6 +153,26 @@ td > .TextButton{
   margin-left: 5%;
 }
 
+.TextButtonWarning{
+  border-style: solid;
+  width: 150px;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #DD0000
+}
+
+.TextButtonWarning > p{
+  color: #FFFFFF;
+}
+
+th > .TextButtonWarning{
+  margin-top: 15%;
+}
+
+td > .TextButtonWarning{
+  margin-top: 2.5%;
+  margin-left: 5%;
+}
 
 .TextButton:hover{
   background-color: #CCCCCC;
