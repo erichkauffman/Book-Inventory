@@ -8,7 +8,7 @@ export default class TextButton extends Component{
 
   render(){
     return(
-      <div className="TextButton" onClick={this.props.onClick}>
+      <div className={this.props.className} onClick={this.props.onClick}>
         <p>{this.props.children}</p>
       </div>
     );
