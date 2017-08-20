@@ -20,7 +20,8 @@ export default class FormView extends Component{
   constructor(props){
     super(props);
     this.state = {
-      err: false,
+      err: true,
+      dispErr: false,
       startDate: moment(),
       bookProps: {
         title: null,
@@ -50,6 +51,7 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   editionChange = (value) => {
@@ -58,6 +60,7 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   yearPrintChange = (value) => {
@@ -66,6 +69,7 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   printingChange = (value) => {
@@ -74,6 +78,7 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   dateChange = (date) => {
@@ -83,6 +88,7 @@ export default class FormView extends Component{
       bookProps: bookProps,
       startDate: date
     });
+    this.checkObject();
   }
 
   locationChange = (value) => {
@@ -96,6 +102,7 @@ export default class FormView extends Component{
       bookProps: bookProps,
       locVal: value
     });
+    this.checkObject();
   }
 
   amtPaidChange = (value) => {
@@ -104,6 +111,7 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   sellPriceChange = (value) => {
@@ -112,6 +120,7 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   siteChange = (e) => {
@@ -120,6 +129,7 @@ export default class FormView extends Component{
     this.setState({
       site: site
     });
+    this.checkObject();
   }
 
   setSite = () => {
@@ -139,13 +149,14 @@ export default class FormView extends Component{
     this.setState({
       bookProps: bookProps
     });
+    this.checkObject();
   }
 
   checkObject = () => {
     let bookProps = this.state.bookProps;
     let check = CheckNotNull(bookProps);
     this.setState({
-      err: !check
+      err: !check,
     });
     return check;
   }
@@ -156,11 +167,15 @@ export default class FormView extends Component{
     if(objReady){
       postBook(this.state.bookProps);
       this.props.changeView();
+    }else{
+      this.setState({
+        dispErr: true
+      });
     }
   }
 
   errEmptyMessage = () => {
-    if(this.state.err){
+    if(this.state.dispErr){
       return(<p className="emptyWarn">All fields must be completed before entry</p>);
     }
     return;
@@ -233,8 +248,8 @@ export default class FormView extends Component{
             <td><input type="text" className="textIn" name="shelf" onChange={this.inputChange}/></td>
           </tr>
           <tr>
-            <th><TextButton onClick={this.submitForm}>Submit</TextButton></th>
-            <td><TextButton onClick={this.props.changeView}>Back</TextButton></td>
+            <th><TextButton className={this.state.err ? "TextButtonWarning" : "TextButton"} onClick={this.submitForm}>Submit</TextButton></th>
+            <td><TextButton className="TextButton" onClick={this.props.changeView}>Back</TextButton></td>
 
           </tr>
         </table>
