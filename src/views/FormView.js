@@ -3,6 +3,7 @@ import NumericInput from 'react-numeric-input';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import IsbnSubmit from '../components/IsbnSubmit';
 import TextButton from '../components/TextButton';
 import { CheckNotNull } from '../lib/CheckNotNull';
 import { postBook } from '../lib/postBook';
@@ -43,6 +44,10 @@ export default class FormView extends Component{
         Amazon: false
       }
     };
+  }
+
+  findBookInfo = (e) => {
+
   }
 
   inputChange = (e) => {
@@ -185,6 +190,10 @@ export default class FormView extends Component{
     return(
       <div className="formView">
         <table className="formHolder">
+          <tr>
+            <th></th>
+            <td><input type="text" className="isbnSearch" name="isbnSearch" placeholder="Enter ISBN Number"/><IsbnSubmit onClick={this.findBookInfo}/></td>
+          </tr>
           <tr>
             <th>Title:</th>
             <td><input type="text" className="textIn" name="title" onChange={this.inputChange}/></td>

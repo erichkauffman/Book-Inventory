@@ -49,6 +49,15 @@
   margin-right: 5%;
 }
 
+.isbnSearch{
+  width: 350px;
+  height: 23px;
+  margin-bottom: 5%;
+  font-size: 18px;
+  border-style: solid;
+  border-color: #BBBBBB;
+}
+
 .textIn{
   width: 350px;
   height: 23px;
@@ -180,6 +189,29 @@ td > .TextButtonWarning{
 
 .TextButton:active{
   background-color: #999999;
+}
+
+/*IsbnSubmit.js*/
+.IsbnSubmit{
+  display: inline-block;
+  height: 40px;
+  width: 100px;
+  text-align: center;
+  border-style: solid;
+  border-radius: 15px;
+}
+
+.IsbnSubmit:hover{
+  background-color: #CCCCCC;
+}
+
+.IsbnSubmit:active{
+  background-color: #999999;
+}
+
+.IsbnSubmit > p{
+  margin: auto;
+  padding-top: 10px;
 }
 
 /*MenuButton.js*/
