@@ -3,8 +3,10 @@ import NumericInput from 'react-numeric-input';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import IsbnSubmit from '../components/IsbnSubmit';
 import TextButton from '../components/TextButton';
 import { CheckNotNull } from '../lib/CheckNotNull';
+import { retrieveBookInfo } from '../lib/RetrieveBookInfo';
 import { postBook } from '../lib/postBook';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -20,6 +22,8 @@ export default class FormView extends Component{
   constructor(props){
     super(props);
     this.state = {
+      searchFor: null,
+      searchErr: false,
       err: true,
       dispErr: false,
       startDate: moment(),
@@ -43,6 +47,38 @@ export default class FormView extends Component{
         Amazon: false
       }
     };
+  }
+
+  getBookInfo = () => {
+    let returnedBookPromise = retrieveBookInfo(this.state.searchFor);
+    returnedBookPromise.then((bookJson) => {
+      if(bookJson.totalItems > 0){
+        let bookInfo = bookJson.items[0];
+        let stateBookProps = this.state.bookProps;
+        stateBookProps.title = bookInfo.volumeInfo.title;
+        stateBookProps.authors = "";
+        bookInfo.volumeInfo.authors.map((i) => {
+          stateBookProps.authors += (i + ', ');
+        });
+        stateBookProps.authors = stateBookProps.authors.slice(0, -2);
+        stateBookProps.isbn = this.state.searchFor;
+        stateBookProps.yr_print = parseInt(bookInfo.volumeInfo.publishedDate);
+        this.setState({
+          bookProps: stateBookProps
+        });
+        console.log(this.state.bookProps)
+      }else{
+        this.setState({
+          searchErr: true
+        });
+      }
+    });
+  }
+
+  getSearchFor = (e) => {
+    this.setState({
+      searchFor: e.target.value
+    });
   }
 
   inputChange = (e) => {
@@ -186,16 +222,20 @@ export default class FormView extends Component{
       <div className="formView">
         <table className="formHolder">
           <tr>
+            <th></th>
+            <td><input type="text" className="isbnSearch" name="isbnSearch" placeholder="Enter ISBN Number" onChange={this.getSearchFor}/><IsbnSubmit onClick={this.getBookInfo}/></td>
+          </tr>
+          <tr>
             <th>Title:</th>
-            <td><input type="text" className="textIn" name="title" onChange={this.inputChange}/></td>
+            <td><input type="text" className="textIn" name="title" value={this.state.bookProps.title} onChange={this.inputChange}/></td>
           </tr>
           <tr>
             <th>Author(s):</th>
-            <td><input type="text" className="textIn" name="authors" onChange={this.inputChange}/></td>
+            <td><input type="text" className="textIn" name="authors" value={this.state.bookProps.authors} onChange={this.inputChange}/></td>
           </tr>
           <tr>
             <th>ISBN:</th>
-            <td><input type="text" className="textIn" name="isbn" onChange={this.inputChange}/></td>
+            <td><input type="text" className="textIn" name="isbn" value={this.state.bookProps.isbn} onChange={this.inputChange}/></td>
           </tr>
           <tr>
             <th>Edition:</th>
@@ -203,7 +243,7 @@ export default class FormView extends Component{
           </tr>
           <tr>
             <th>Year Printed:</th>
-            <td><NumericInput min={0} className="numberInputs" onChange={this.yearPrintChange}/></td>
+            <td><NumericInput min={0} className="numberInputs" value={this.state.bookProps.yr_print} onChange={this.yearPrintChange}/></td>
           </tr>
           <tr>
             <th>Printing:</th>
