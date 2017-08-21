@@ -8,7 +8,7 @@ export default class IsbnSubmit extends Component{
 
   render(){
     return(
-      <div className="IsbnSubmit" onClick={this.onClick}>
+      <div className="IsbnSubmit" onClick={this.props.onClick}>
         <p>Search</p>
       </div>
     )
