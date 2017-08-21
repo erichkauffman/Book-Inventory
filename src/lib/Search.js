@@ -1,7 +1,7 @@
 import React from 'react';
 import BookMenuItem from '../components/BookMenuItem';
 
-
+//Do not export display
 export function allBooks(bookData, searchType, search, getID){
   let bookItems = [];
   switch(searchType){

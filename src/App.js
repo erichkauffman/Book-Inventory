@@ -25,6 +25,7 @@ class App extends Component{
 
   render(){
     return(
+      //Do not export display functions
       chooseView(this.state.view, this.goToMain, this.goToForm)
     );
   }
