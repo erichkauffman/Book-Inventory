@@ -80,6 +80,16 @@
 
 .purchase-location{
   width: 225px;
+  display: inline-block;
+}
+
+.buttonHolder{
+  text-align: center;
+  display: inline;
+}
+
+.saveLoc{
+
 }
 
 /* 2. Components */
