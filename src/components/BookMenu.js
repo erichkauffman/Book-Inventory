@@ -24,7 +24,6 @@ export default class BookMenu extends Component{
   }
 
   render(){
-    //Do not import display
     return(
       <div className="MenuHolder">
         {this.conditionalSearch()}
