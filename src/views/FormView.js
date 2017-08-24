@@ -13,10 +13,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-select/dist/react-select.css';
 
 //Location options stand-in
-const locOps = [{value: 'Online', label: 'Online'},
-                {value: 'Redwing Public Library', label: 'Redwing Public Library'},
-                {value: 'Hudson Public Library', label: 'Hudson Public Library'}];
-
 export default class FormView extends Component{
 
   constructor(props){
@@ -27,6 +23,7 @@ export default class FormView extends Component{
       err: true,
       dispErr: false,
       startDate: moment(),
+      locOps: [],
       bookProps: {
         title: null,
         authors: null,
@@ -73,6 +70,36 @@ export default class FormView extends Component{
         });
       }
     });
+  }
+
+  getLocations = () => {
+    fetch('http://localhost:8000/locations')
+    .then( (response) => {
+      return response.json();
+    })
+    .then( (locations) => {
+      let formattedLocations = [];
+      locations.map( (i) => {
+        formattedLocations.push({value: i.value, label: i.value});
+      });
+      this.setState({
+        locOps: formattedLocations
+      });
+    })
+    .catch( (err) => {
+      console.log(err);
+    });
+  }
+
+  sendLocation = () => {
+    if(this.state.bookProps.loc_purch != null){
+      console.log('http://localhost:8000/locations/' + this.state.bookProps.loc_purch);
+      fetch('http://localhost:8000/locations/' + this.state.bookProps.loc_purch, {
+        method: "post"
+      }).then((response) => {
+        console.log(response);
+      });
+    }
   }
 
   getSearchFor = (e) => {
@@ -217,6 +244,10 @@ export default class FormView extends Component{
     return;
   }
 
+  componentDidMount(){
+    this.getLocations();
+  }
+
   render(){
     return(
       //Could be exported as a form component
@@ -269,7 +300,8 @@ export default class FormView extends Component{
           </tr>
           <tr>
             <th>Purchase Location:</th>
-            <td><Select.Creatable className="purchase-location" name="purchase-location" options={locOps} value={this.state.locVal} placeholder="select a location" onChange={this.locationChange}/></td>
+            <td className="test"><Select.Creatable className="purchase-location" name="purchase-location" options={this.state.locOps} value={this.state.locVal} placeholder="select a location" onChange={this.locationChange}/>
+                <div className="buttonHolder"><button type="button" className="saveLoc" onClick={this.sendLocation}>Save</button></div></td>
           </tr>
           <tr>
             <th>Amount Paid:</th>
