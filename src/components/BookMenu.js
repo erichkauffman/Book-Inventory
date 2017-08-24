@@ -15,7 +15,7 @@ export default class BookMenu extends Component{
         break;
       case 'I':
         searchType = "isbn";
-        break
+        break;
     }
     this.props.bookData.map((i) => {
       bookItems.push(<BookMenuItem title={i.title} author={i.authors} id={i.rowid} onClick={this.props.getID}/>);
