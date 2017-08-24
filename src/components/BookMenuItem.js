@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactConfirmAlert, { confirmAlert } from 'react-confirm-alert';
+import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from '../images/DeleteButton.png';
 import MoneyButton from '../images/MoneyButton.png';
