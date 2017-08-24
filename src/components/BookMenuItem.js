@@ -9,12 +9,16 @@ export default class BookMenuItem extends Component{
   constructor(props){
     super(props);
     this.state = {
-      req: 1
+      req: 1,
+      style: "unselected"
     };
   }
 
   handleClick = (e) => {
     this.props.onClick(this.props.id);
+    this.setState({
+      style: "selected"
+    });
   }
 
   handleSell = (e) => {
@@ -42,7 +46,7 @@ export default class BookMenuItem extends Component{
   conditionlRender = (check) => {
     if(check){
       return(
-        <div className="bookDiv" onClick={this.handleClick}>
+        <div className={this.state.style} onClick={this.handleClick}>
           <p className="bookPt">{this.props.title}</p>
           <div className="LeftHolder">
             <p className="bookPa">{this.props.author}</p>
@@ -54,6 +58,12 @@ export default class BookMenuItem extends Component{
     }else{
       return null;
     }
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      style: nextProps.checkSingle === nextProps.id ? "selected" : "unselected"
+    });
   }
 
   render(){

@@ -82,7 +82,7 @@ export default class MainView extends Component{
           <SearchButton currentSearchType={this.state.searchType} getSearchType={this.getSearchState}>T</SearchButton>
           <SearchButton currentSearchType={this.state.searchType} getSearchType={this.getSearchState}>I</SearchButton>
         </div>
-        <BookMenu bookData={this.state.books} getID={this.getID} searchType={this.state.searchType} search={this.state.search}/>
+        <BookMenu bookData={this.state.books} getID={this.getID} searchType={this.state.searchType} search={this.state.search} checkSingle={this.state.singleBook.rowid}/>
         {this.renderBookInfo()}
       </div>
     );
