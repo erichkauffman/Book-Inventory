@@ -103,7 +103,7 @@
 }
 
 /*BookMenuItem.js*/
-.bookDiv{
+.unselected{
   background-color: #CCCCCC;
   height: 65px;
   margin-top: .5%;
@@ -111,12 +111,28 @@
   border-radius: 10px;
 }
 
-.bookDiv:hover{
+.unselected:hover{
   background-color: #AAAAAA;
 }
 
-.bookDiv:active{
+.unselected:active{
   background-color: #888888;
+}
+
+.selected{
+  background-color: #0e3b84;
+  height: 65px;
+  margin-top: .5%;
+  text-align: left;
+  border-radius: 10px;
+}
+
+.selected > p{
+  color: #FFFFFF;
+}
+
+.selected > div > p{
+  color: #FFFFFF;
 }
 
 .bookPt{
