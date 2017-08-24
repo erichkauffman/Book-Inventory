@@ -250,6 +250,7 @@ export default class FormView extends Component{
 
   render(){
     return(
+      //Could be exported as a form component
       <div className="formView">
         <table className="formHolder">
           <tr>
